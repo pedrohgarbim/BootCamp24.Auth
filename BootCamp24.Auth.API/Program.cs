@@ -23,13 +23,14 @@ builder.Services.AddIdentityCore<User>(options =>
     options.Password.RequireNonAlphanumeric = false;
 
     options.SignIn.RequireConfirmedEmail = true;
+
 })
-    .AddRoles<IdentityRole>()
-    .AddRoleManager<RoleManager<IdentityRole>>()
-    .AddEntityFrameworkStores<ApplicationDataContext>()
-    .AddSignInManager<SignInManager<User>>()
-    .AddUserManager<UserManager<User>>()
-    .AddDefaultTokenProviders();
+.AddRoles<IdentityRole>()
+.AddRoleManager<RoleManager<IdentityRole>>()
+.AddEntityFrameworkStores<ApplicationDataContext>()
+.AddSignInManager<SignInManager<User>>()
+.AddUserManager<UserManager<User>>()
+.AddDefaultTokenProviders();
 
 builder.Services.AddScoped<JWTService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -41,17 +42,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
             ValidIssuer = builder.Configuration["JWT:Issuer"],
             ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateAudience = false,
         };
     });
-
-// Add authorization services
-builder.Services.AddAuthorization();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
 

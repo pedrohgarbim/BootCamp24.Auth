@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BootCamp24.Auth.API.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20240823211949_InitialMigration")]
+    [Migration("20240829172953_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

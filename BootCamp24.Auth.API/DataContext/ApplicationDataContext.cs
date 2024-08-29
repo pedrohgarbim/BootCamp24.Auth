@@ -10,5 +10,11 @@ namespace BootCamp24.Auth.API.DataContext
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+        }
     }
 }
