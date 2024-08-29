@@ -6,6 +6,8 @@ Entity Framework Core
 
 JWT (JSON Web Token) para autenticação
 
+SQLSERVER para armazenamento 
+
 ## Endpoints
 ### 1. Registro de Usuário
 Endpoint: POST para registro de usuário 
